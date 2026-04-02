@@ -17,12 +17,22 @@ apply from: '../build.dependencies.gradle'
 
 android {
     namespace = 'org.firstinspires.ftc.teamcode'
-
+    compileSdk = 34
     packagingOptions {
         jniLibs.useLegacyPackaging true
     }
 }
+repositories {maven {
+    url = { "https://mymavenrepo.com/repo/XqXfxnKyykqSG4bzSHxE/" }}
+    maven {
+    url = {"https://mymaven.bylazar.com/releases" }
+
+}
+}
 
 dependencies {
     implementation project(':FtcRobotController')
+    implementation("com.lightstep:lightstep-core:1.0-Alpha")
+    implementation("com.lightstep:lightstep-ftc:1.0")
+    implementation "com.bylazar:fullpanels:1.0.12"
 }
