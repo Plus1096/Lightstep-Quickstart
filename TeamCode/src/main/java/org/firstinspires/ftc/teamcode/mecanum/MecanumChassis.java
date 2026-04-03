@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.mecanum;
 
+import com.lumen.lightstep.math.Util;
+
 import org.firstinspires.ftc.teamcode.Motor;
 import org.firstinspires.ftc.teamcode.Wheel;
 
@@ -41,10 +43,10 @@ public class MecanumChassis{
         this.blMaxPow = blMaxPow;
         this.brMaxPow = brMaxPow;
         this.maxVel = maxVel;
-        this.frontRight =(v)-> frontRight.setPower(Math.min(v,this.frMaxPow)/maxVel);
-        this.frontLeft = (v)-> frontLeft.setPower(Math.min(v,this.flMaxPow)/maxVel);
-        this.backRight =(v)-> backRight.setPower(Math.min(v,this.brMaxPow)/maxVel);
-        this.backLeft = (v)-> backLeft.setPower(Math.min(v,this.blMaxPow)/maxVel);
+        this.frontRight =(v)-> frontRight.setPower(Util.clamp(v*frMaxPow, -this.frMaxPow,this.frMaxPow)/maxVel);
+        this.frontLeft = (v)-> frontLeft.setPower(Util.clamp(v*flMaxPow, -this.flMaxPow,this.flMaxPow)/maxVel);
+        this.backRight =(v)-> backRight.setPower(Util.clamp(v*brMaxPow, -this.brMaxPow,this.brMaxPow)/maxVel);
+        this.backLeft = (v)-> backLeft.setPower(Util.clamp(v*blMaxPow, -this.blMaxPow,this.blMaxPow)/maxVel);
 
     }
     MecanumChassis (Wheel frontRight, Wheel frontLeft, Wheel backRight, Wheel backLeft){
